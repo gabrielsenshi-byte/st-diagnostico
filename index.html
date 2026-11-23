@@ -526,10 +526,11 @@
         .map(el => el.value)
         .join(' | ') || 'Não selecionado';
 
-      // Envio silencioso por e-mail via FormSubmit (sem expor chaves privadas)
+      // Envio assíncrono em segundo plano (keepalive) para resposta instantânea na tela
       try {
-        await fetch(`https://formsubmit.co/ajax/${EMAIL_DESTINO}`, {
+        fetch(`https://formsubmit.co/ajax/${EMAIL_DESTINO}`, {
           method: 'POST',
+          keepalive: true,
           headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
@@ -545,7 +546,7 @@
             Gargalos: gargalos,
             Tarefa_Prioritaria: tarefa
           })
-        });
+        }).catch(err => console.warn('Fallback para WhatsApp:', err));
       } catch (err) {
         console.warn('Fallback para WhatsApp:', err);
       }
