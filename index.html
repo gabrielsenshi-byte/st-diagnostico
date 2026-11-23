@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ST Consultoria e Gestão | Diagnóstico de Processos & Automação</title>
+  <meta name="description" content="Elimine desperdícios, retrabalho manual e gargalos operacionais. Solicite um Diagnóstico de Processos com a ST Consultoria e Gestão." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-dark: #0f172a;
+      --bg-navy: #161f36;
+      --card-bg: #1e2942;
+      --card-border: rgba(212, 160, 23, 0.25);
+      --gold: #d4a017;
+      --gold-light: #e9be49;
+      --text-white: #f8fafc;
+      --text-muted: #94a3b8;
+      --success: #10b981;
+      --input-bg: #121a2d;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top right, #1e2d4f 0%, var(--bg-dark) 60%);
+      color: var(--text-white);
+      min-height: 100vh;
+      line-height: 1.5;
+      padding: 24px 16px 48px;
+    }
+
+    .container {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* Header Marca ST */
+    .brand-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 28px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .logo-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .logo-bar {
+      width: 44px;
+      height: 3px;
+      background: var(--gold);
+      margin-bottom: 2px;
+      border-radius: 2px;
+    }
+
+    .logo-text {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 30px;
+      font-weight: 800;
+      color: var(--gold);
+      line-height: 1;
+      letter-spacing: -0.5px;
+    }
+
+    .brand-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-white);
+    }
+
+    .brand-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+    }
+
+    /* Hero */
+    .hero {
+      margin-bottom: 28px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(212, 160, 23, 0.12);
+      border: 1px solid rgba(212, 160, 23, 0.35);
+      color: var(--gold-light);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 1.22;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    h1 span {
+      color: var(--gold-light);
+    }
+
+    .hero p {
+      font-size: 15px;
+      color: var(--text-muted);
+    }
+
+    /* Pillars */
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 26px;
+    }
+
+    .pillar {
+      background: rgba(30, 41, 66, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 12px 10px;
+      text-align: center;
+    }
+
+    .pillar strong {
+      display: block;
+      font-size: 13px;
+      color: var(--gold-light);
+      margin-bottom: 2px;
+    }
+
+    .pillar span {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* Card do Formulário */
+    .form-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 28px 24px;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+    }
+
+    .form-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .form-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 22px;
+    }
+
+    .field {
+      margin-bottom: 18px;
+    }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-white);
+      margin-bottom: 6px;
+    }
+
+    label span.req {
+      color: var(--gold);
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    select,
+    textarea {
+      width: 100%;
+      background: var(--input-bg);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 14px;
+      color: var(--text-white);
+      font-family: inherit;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(212, 160, 23, 0.16);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 82px;
+    }
+
+    /* Checkboxes de Gargalos */
+    .checkbox-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    .check-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--input-bg);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 10px 13px;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      font-size: 13.5px;
+      color: var(--text-white);
+      font-weight: 400;
+    }
+
+    .check-option:hover {
+      border-color: rgba(212, 160, 23, 0.5);
+    }
+
+    .check-option input[type="checkbox"] {
+      width: 17px;
+      height: 17px;
+      accent-color: var(--gold);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    /* Botão Submit */
+    .btn-submit {
+      width: 100%;
+      background: linear-gradient(135deg, var(--gold) 0%, #b8860b 100%);
+      color: #0b1120;
+      border: none;
+      border-radius: 12px;
+      padding: 15px 20px;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      cursor: pointer;
+      transition: transform 0.15s, filter 0.2s;
+      margin-top: 8px;
+    }
+
+    .btn-submit:hover {
+      filter: brightness(1.08);
+      transform: translateY(-1px);
+    }
+
+    .btn-submit:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .privacy-note {
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 12px;
+    }
+
+    /* Tela de Sucesso */
+    .success-box {
+      display: none;
+      text-align: center;
+      padding: 16px 8px;
+    }
+
+    .success-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: rgba(16, 185, 129, 0.15);
+      border: 2px solid var(--success);
+      color: var(--success);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin: 0 auto 18px;
+    }
+
+    .success-box h2 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .success-box p {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 22px;
+    }
+
+    .btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      background: #25d366;
+      color: #062814;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 15px;
+      padding: 15px 20px;
+      border-radius: 12px;
+      transition: filter 0.2s;
+    }
+
+    .btn-whatsapp:hover {
+      filter: brightness(1.06);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 32px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 540px) {
+      h1 { font-size: 24px; }
+      .field-row { grid-template-columns: 1fr; gap: 0; }
+      .pillars { grid-template-columns: 1fr; }
+      .form-card { padding: 22px 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="brand-header">
+      <div class="logo-box">
+        <div class="logo-bar"></div>
+        <div class="logo-text">ST</div>
+      </div>
+      <div class="brand-info">
+        <span class="brand-name">ST Consultoria e Gestão</span>
+        <span class="brand-sub">Processos • Eficiência Operacional • Automação</span>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="badge">Diagnóstico Operacional Gratuito</div>
+      <h1>Elimine <span>desperdícios e trabalho manual</span> que drenam a margem da sua empresa.</h1>
+      <p>Preencha em 40 segundos para mapeamos seus gargalos prioritários e receber um plano prático de melhoria e automação.</p>
+    </section>
+
+    <section class="pillars">
+      <div class="pillar">
+        <strong>1. Enxugar</strong>
+        <span>Corte de retrabalho e etapas inúteis</span>
+      </div>
+      <div class="pillar">
+        <strong>2. Padronizar</strong>
+        <span>Fluxos claros, donos e KPIs reais</span>
+      </div>
+      <div class="pillar">
+        <strong>3. Automatizar</strong>
+        <span>Rotinas em nuvem 24/7 sem erro humano</span>
+      </div>
+    </section>
+
+    <main class="form-card">
+      <form id="diagnosticoForm">
+        <h2 class="form-title">Ficha Rápida de Diagnóstico</h2>
+        <p class="form-subtitle">Suas informações são 100% confidenciais e analisadas diretamente pelo consultor líder.</p>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="nome">Seu nome <span class="req">*</span></label>
+            <input type="text" id="nome" name="nome" placeholder="Ex: João Silva" required />
+          </div>
+          <div class="field">
+            <label for="cargo">Cargo / Função <span class="req">*</span></label>
+            <input type="text" id="cargo" name="cargo" placeholder="Ex: Sócio, Diretor, Gerente" required />
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="empresa">Nome da empresa <span class="req">*</span></label>
+            <input type="text" id="empresa" name="empresa" placeholder="Ex: Alfa Distribuidora" required />
+          </div>
+          <div class="field">
+            <label for="segmento">Segmento <span class="req">*</span></label>
+            <select id="segmento" name="segmento" required>
+              <option value="" disabled selected>Selecione...</option>
+              <option value="Logística / Transportadora">Logística / Transportadora</option>
+              <option value="Indústria / Manufatura">Indústria / Manufatura</option>
+              <option value="Comércio / Distribuidora / E-commerce">Comércio / Distribuidora / E-commerce</option>
+              <option value="Serviços / Escritório / Clínica">Serviços / Escritório / Clínica</option>
+              <option value="Outro segmento">Outro segmento</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="equipe">Tamanho da equipe <span class="req">*</span></label>
+            <select id="equipe" name="equipe" required>
+              <option value="" disabled selected>Selecione...</option>
+              <option value="1 a 5 pessoas">1 a 5 pessoas</option>
+              <option value="6 a 20 pessoas">6 a 20 pessoas</option>
+              <option value="21 a 50 pessoas">21 a 50 pessoas</option>
+              <option value="Mais de 50 pessoas">Mais de 50 pessoas</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="whatsapp">WhatsApp para retorno <span class="req">*</span></label>
+            <input type="tel" id="whatsapp" name="whatsapp" placeholder="(14) 99999-9999" required />
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Onde você sente os maiores gargalos hoje?</label>
+          <div class="checkbox-grid">
+            <label class="check-option">
+              <input type="checkbox" name="gargalos" value="Muito trabalho manual em planilhas e WhatsApp" />
+              Muito trabalho manual em planilhas, sistemas e WhatsApp
+            </label>
+            <label class="check-option">
+              <input type="checkbox" name="gargalos" value="Falta de padrão na equipe / dependência de pessoas" />
+              Falta de padrão operacional (setor trava se alguém falta)
+            </label>
+            <label class="check-option">
+              <input type="checkbox" name="gargalos" value="Erros em faturamento, conciliação ou cobranças" />
+              Erros em faturamento, conciliação financeira ou cobranças
+            </label>
+            <label class="check-option">
+              <input type="checkbox" name="gargalos" value="Falta de indicadores claros de custo e produtividade" />
+              Falta de indicadores confiáveis de custo e produtividade
+            </label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="tarefa">Se pudesse eliminar 1 tarefa repetitiva hoje, qual seria?</label>
+          <textarea id="tarefa" name="tarefa" placeholder="Ex: Conferir faturas manualmente toda semana, preencher planilhas de controle, cobrar status da equipe..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit" id="btnSubmit">
+          Solicitar Diagnóstico Gratuito →
+        </button>
+        <p class="privacy-note">🔒 Dados protegidos • Retorno em até 24 horas úteis</p>
+      </form>
+
+      <div class="success-box" id="successBox">
+        <div class="success-icon">✓</div>
+        <h2>Diagnóstico Solicitado com Sucesso!</h2>
+        <p>Recebemos os dados da sua operação. Se quiser agilizar o atendimento e já receber nosso Checklist de Desperdícios agora, clique abaixo para confirmar no WhatsApp:</p>
+        <a id="whatsappLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+          💬 Confirmar e Falar no WhatsApp da ST
+        </a>
+      </div>
+    </main>
+
+    <footer>
+      © 2026 ST Consultoria e Gestão • Processos, Lean Six Sigma &amp; Automação • @stconsultoriabr
+    </footer>
+  </div>
+
+  <script>
+    const WHATSAPP_ST = '5514998288995';
+    const EMAIL_DESTINO = 'gabrielsenshi@gmail.com';
+
+    const form = document.getElementById('diagnosticoForm');
+    const btnSubmit = document.getElementById('btnSubmit');
+    const successBox = document.getElementById('successBox');
+    const whatsappLink = document.getElementById('whatsappLink');
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      btnSubmit.disabled = true;
+      btnSubmit.textContent = 'Enviando diagnóstico...';
+
+      const nome = document.getElementById('nome').value.trim();
+      const cargo = document.getElementById('cargo').value.trim();
+      const empresa = document.getElementById('empresa').value.trim();
+      const segmento = document.getElementById('segmento').value;
+      const equipe = document.getElementById('equipe').value;
+      const whatsapp = document.getElementById('whatsapp').value.trim();
+      const tarefa = document.getElementById('tarefa').value.trim() || 'Não informado';
+
+      const gargalos = Array.from(document.querySelectorAll('input[name="gargalos"]:checked'))
+        .map(el => el.value)
+        .join(' | ') || 'Não selecionado';
+
+      // Envio silencioso por e-mail via FormSubmit (sem expor chaves privadas)
+      try {
+        await fetch(`https://formsubmit.co/ajax/${EMAIL_DESTINO}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            _subject: `🚀 Novo Lead ST Consultoria: ${empresa} (${nome})`,
+            Nome: nome,
+            Cargo: cargo,
+            Empresa: empresa,
+            Segmento: segmento,
+            Equipe: equipe,
+            WhatsApp: whatsapp,
+            Gargalos: gargalos,
+            Tarefa_Prioritaria: tarefa
+          })
+        });
+      } catch (err) {
+        console.warn('Fallback para WhatsApp:', err);
+      }
+
+      // Monta mensagem pronta para WhatsApp da ST
+      const msgZap = [
+        `Olá! Acabei de preencher o Diagnóstico da ST Consultoria:`,
+        ``,
+        `👤 *Nome:* ${nome} (${cargo})`,
+        `🏢 *Empresa:* ${empresa} — ${segmento}`,
+        `👥 *Equipe:* ${equipe}`,
+        `⚠️ *Gargalos:* ${gargalos}`,
+        `⚡ *Tarefa prioritária:* ${tarefa}`
+      ].join('\n');
+
+      whatsappLink.href = `https://wa.me/${WHATSAPP_ST}?text=${encodeURIComponent(msgZap)}`;
+
+      form.style.display = 'none';
+      successBox.style.display = 'block';
+    });
+  </script>
+</body>
+</html>
